@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Resistration Form</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+$(window).load(function(){
+state1=new Array("Kolkata","Kharagpur","Durgapur","Siliguri");
+state2=new Array('Patna','Gaya','Bhagalpur','Muzaffarpur','Hajipur');
+state3=new Array('Bhubaneswar','cuttack','puri');
+
+populateSelect();
+
+$(function() {
+
+      $('#State').change(function(){
+        populateSelect();
+    });
+    
+});
+
+
+function populateSelect(){
+    State=$('#State').val();
+    $('#item').html('');
+    
+    
+    if(State=='WestBengal'){
+        state1.forEach(function(t) { 
+            $('#item').append('<option>'+t+'</option>');
+        });
+    }
+    
+    if(State=='Bihar'){
+        state2.forEach(function(t) {
+            $('#item').append('<option>'+t+'</option>');
+        });
+    }
+	if(State=='Orissa'){
+        state3.forEach(function(t) {
+            $('#item').append('<option>'+t+'</option>');
+        });
+    }
+    
+}
+});
+</script>
+
+</head>
+
+<body>
+<form method="post" action="create">
+EmployeeId:<br>
+	<input type="text" name="eId">
+	<br>
+  First name:<br>
+  <input type="text" name="firstname">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname">
+  <br>
+  Age:<br>
+  <input type="number" name="age">
+  <br>
+  <br>
+ 
+  <b>
+  Adress:<br></b>
+  <br>
+  House No:<br>
+  <textarea name="houseNo"></textarea>
+  <br>
+  Street:<br>
+  <textarea name="street"></textarea>
+  <br>
+  PIN:<br>
+  
+  <input id="pin" name="zipCode" type="text" value="">
+<br>
+<br>
+State:<br>
+<select id="State" name="state">
+    <option value="WestBengal">WestBengal</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Orissa">Orissa</option>
+</select>
+<br>
+<br>
+City:<br>
+<select id="item" name="city">
+
+</select>
+<br>
+<br>
+<input type="submit" value="create">
+</form>
+<br>
+</body>
+</html>
